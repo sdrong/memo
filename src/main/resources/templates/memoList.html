@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>제목</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="memo : ${memos}">
+        <td th:text="${memo.id}"></td>
+        <td th:text="${memo.data}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
