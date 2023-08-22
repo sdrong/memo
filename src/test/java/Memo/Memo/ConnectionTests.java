@@ -13,7 +13,7 @@ public class ConnectionTests {
 
         Connection connection = DriverManager.getConnection(
                 "jdbc:mariadb://localhost:3306/memodb",
-                "root",
+                "memouser",
                 "6030"
         );
         Assertions.assertNotNull(connection);

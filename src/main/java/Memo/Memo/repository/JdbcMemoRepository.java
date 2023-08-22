@@ -48,13 +48,9 @@ public class JdbcMemoRepository implements MemoRepository{
     }
     @Override
     public Memo save(Memo memo) {
-        // 기존 데이터의 개수를 가져오는 로직
-        int existingCount = getCountOfExistingData(); // 예시용 메서드
 
-        // ID 계산
-        long newId = existingCount + 1;
         //db에 전송할 쿼리문
-        String sql = "INSERT INTO memo(id, data) values(?, ?)";
+        String sql = "INSERT INTO memo(data) values(?)";
         //db와의 연결과 관련된 정보를 담을 변수들을 선언
         Connection conn = null; //인터페이스와 데이터 베이스의 연결성
         PreparedStatement pstmt = null; //sql전달
@@ -71,8 +67,7 @@ public class JdbcMemoRepository implements MemoRepository{
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             //첫번쨰 ?와 memo의 data를 매핑해서 치환
             //데이터 바인딩
-            pstmt.setLong(1, newId);
-            pstmt.setString(2, memo.getData());//데이터 세팅
+            pstmt.setString(1, memo.getData());//데이터 세팅
             //db에 실제 쿼리가 발송
             pstmt.executeUpdate();//insert,update,delete를 실행하고 결과를 int타입으로 변환
             //RETURN_GENERATED_KEYS 로 얻은 값을 불러와 rs에 저장
