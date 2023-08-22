@@ -1,11 +1,13 @@
 package Memo.Memo.repository;
 
 import Memo.Memo.domain.Memo;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JpaMemoRepository implements MemoRepository{
 
     private final EntityManager em;
