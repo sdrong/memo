@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public class JpaMemoRepository implements MemoRepository{
 
-    private final EntityManager em;
+    private final EntityManager em; //EntityManager은 자바 애플리케이션과 데이터 베이스 사이의 영속성을 관리하는 역할
 
     public JpaMemoRepository(EntityManager em) {
         this.em = em;
@@ -18,7 +18,7 @@ public class JpaMemoRepository implements MemoRepository{
 
     @Override
     public Memo save(Memo memo) {
-        em.persist(memo); //새로운 엔티티 추가
+        em.persist(memo); //새로운 엔티티 추가 데이터베이스에 영속화
         return memo;
     }
 
