@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MemoController {
@@ -40,5 +42,18 @@ public class MemoController {
         List<Memo> memos = memoService.all_views();
         model.addAttribute("memos", memos);// "memos"라는 이름으로 모델에 추가합니다. 이렇게 함으로써 뷰에서 해당 이름을 통해 메모 목록에 접근할 수 있습니다.
         return "/memoList";
+    }
+
+    @GetMapping(value = "/onememo")
+    public String one_view(Model model, @RequestParam("id") Long id){
+        Optional<Memo> memo = memoService.findMemo(id);
+
+        if(memo.isPresent()){
+            model.addAttribute("onememo", memo.get());
+            return "/oneview";
+        }
+        else{
+            return "redirect:/memos"; // 메모가 없는 경우 목록 페이지로 리다이렉트합니다.
+        }
     }
 }

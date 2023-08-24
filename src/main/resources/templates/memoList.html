@@ -1,7 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<body>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .memo-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      $(".memo-box").click(function() {
+        var memoId = $(this).data("memo-id");
+        var memoData = $(this).data("memo-data");
 
+        // 페이지 전환을 위해 URL을 생성합니다.
+        var url = "/onememo?id=" + memoId;
+
+        // 생성한 URL로 페이지를 이동합니다.
+        window.location.href = url;
+      });
+    });
+  </script>
+</head>
+<body>
 <div class="container">
   <div>
     <table>
@@ -14,11 +38,21 @@
       <tbody>
       <tr th:each="memo : ${memos}">
         <td th:text="${memo.id}"></td>
-        <td th:text="${memo.data}"></td>
+        <td>
+          <div class="memo-box" th:data-memo-id="${memo.id}" th:data-memo-data="${memo.data}">
+            <span th:text="${memo.data}"></span>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>
   </div>
 </div>
+<button onclick="goBack()">뒤로가기</button>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
 </body>
 </html>

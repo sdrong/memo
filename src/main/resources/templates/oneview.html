@@ -5,6 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'memo id:. ' + ${id} + ' ' + 'memo data: ' + ${data}" "  >안녕하세요. 메모 프로그램입니다.</p>
+<div>
+    <div th:if="${onememo != null}">
+        <p th:text="'Memo ID: ' + ${onememo.id}"></p>
+        <p th:text="'Memo Data: ' + ${onememo.data}"></p>
+    </div>
+</div>
+<button onclick="goBack()">뒤로가기</button>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>
