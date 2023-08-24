@@ -31,4 +31,6 @@ public class MemoService {
     public Optional<Memo> findMemo(Long memoId){ //없을 수 도 있으므로
         return memoRepository.findById(memoId);
     }
+
+    public void deleteMemo(Long id){memoRepository.delete(id);}
 }

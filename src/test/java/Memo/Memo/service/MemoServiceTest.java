@@ -72,4 +72,21 @@ class MemoServiceTest {
         Memo result = memoService.findMemo(memo.getId()).get();
         Assertions.assertThat(result).isEqualTo(memo);
     }
+
+    @Test
+    void deleteMemo(){
+        //given
+        Memo m1 = new Memo();
+        m1.setData("m1");
+        Memo m2 = new Memo();
+        m2.setData("m2");
+
+        //when
+        memoService.addMemo(m1);
+        memoService.addMemo(m2);
+        memoService.deleteMemo(m1.getId());
+
+        //then
+        Assertions.assertThat(memoRepository.all_view()).hasSize(1);
+    }
 }

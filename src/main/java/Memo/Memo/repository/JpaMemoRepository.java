@@ -41,4 +41,5 @@ public class JpaMemoRepository implements MemoRepository{
         return em.createQuery("select m from Memo m", Memo.class)
                 .getResultList();
     }
+
 }

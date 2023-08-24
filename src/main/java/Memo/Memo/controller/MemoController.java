@@ -56,4 +56,10 @@ public class MemoController {
             return "redirect:/memos"; // 메모가 없는 경우 목록 페이지로 리다이렉트합니다.
         }
     }
+
+    @PostMapping(value = "/delete")
+    public String deleteMemo(@RequestParam("id") Long id){
+        memoService.deleteMemo(id);
+        return "redirect:/memos";
+    }
 }
