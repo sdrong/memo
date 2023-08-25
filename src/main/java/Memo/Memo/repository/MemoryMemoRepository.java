@@ -32,6 +32,11 @@ public class MemoryMemoRepository implements MemoRepository{
         return new ArrayList<>(store.values()); //map형태를 배열 형태로 만들어 주기 위함
     }
 
+    @Override
+    public Memo redata(Memo memo) {
+        return null;
+    }
+
     public void clearStore(){
         store.clear();
     }

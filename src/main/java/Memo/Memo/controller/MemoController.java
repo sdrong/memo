@@ -62,4 +62,29 @@ public class MemoController {
         memoService.deleteMemo(id);
         return "redirect:/memos";
     }
+
+    @GetMapping("/re")
+    public String editForm(Model model, @RequestParam("id") Long id) {
+        Optional<Memo> memo = memoService.findMemo(id);
+
+        if (memo.isPresent()) {
+            model.addAttribute("memo", memo.get());
+            return "/redataMemo"; // 수정 폼 페이지로 이동
+        } else {
+            return "redirect:/memos"; // 메모가 없는 경우 목록 페이지로 리다이렉트
+        }
+    }
+
+    @PostMapping("/re")
+    public String edit(@RequestParam("id") Long id, @RequestParam("data") String newData) {
+        Optional<Memo> memo = memoService.findMemo(id);
+
+        if (memo.isPresent()) {
+            Memo existingMemo = memo.get();
+            existingMemo.setData(newData);
+            memoService.addMemo(existingMemo);
+        }
+
+        return "redirect:/memos"; // 수정 후 목록 페이지로 리다이렉트
+    }
 }

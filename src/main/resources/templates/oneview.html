@@ -9,6 +9,10 @@
     <div th:if="${onememo != null}">
         <p th:text="'Memo ID: ' + ${onememo.id}"></p>
         <p th:text="'Memo Data: ' + ${onememo.data}"></p>
+        <form th:action="@{/re}" method="post">
+            <input type="hidden" th:name="id" th:value="${onememo.id}" />
+            <button type="submit">수정</button>
+        </form>
         <form th:action="@{/delete}" method="post">
             <input type="hidden" th:name="id" th:value="${onememo.id}" />
             <button type="submit">삭제</button>

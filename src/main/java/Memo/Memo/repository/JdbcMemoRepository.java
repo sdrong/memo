@@ -158,6 +158,11 @@ public class JdbcMemoRepository implements MemoRepository{
         }
     }
 
+    @Override
+    public Memo redata(Memo memo) {
+        return null;
+    }
+
     private Connection getConnection() {
         return DataSourceUtils.getConnection(dataSource);
     }

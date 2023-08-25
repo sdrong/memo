@@ -42,4 +42,8 @@ public class JpaMemoRepository implements MemoRepository{
                 .getResultList();
     }
 
+    @Override
+    public Memo redata(Memo memo) {
+        return null;
+    }
 }

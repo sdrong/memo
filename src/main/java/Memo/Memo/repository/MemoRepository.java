@@ -12,6 +12,5 @@ public interface MemoRepository {
     void delete(Long num);
     List<Memo> all_view();
 
-
-
+    Memo redata(Memo memo);
 }

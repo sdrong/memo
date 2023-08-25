@@ -33,4 +33,6 @@ public class MemoService {
     }
 
     public void deleteMemo(Long id){memoRepository.delete(id);}
+
+    public void reMemo(Memo memo){memoRepository.redata(memo);}
 }
