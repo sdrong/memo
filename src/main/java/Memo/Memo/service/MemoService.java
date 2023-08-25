@@ -34,5 +34,22 @@ public class MemoService {
 
     public void deleteMemo(Long id){memoRepository.delete(id);}
 
-    public void reMemo(Memo memo){memoRepository.redata(memo);}
+    public void reMemo(Long id, String newData) {
+        Optional<Memo> memoOptional = memoRepository.findById(id);
+
+        if (memoOptional.isPresent()) {
+            Memo existingMemo = memoOptional.get();
+
+            // 기존 데이터를 수정
+            existingMemo.setData(newData);
+
+            // 새로운 데이터를 추가한 엔티티 생성
+            Memo newMemo = new Memo();
+            newMemo.setData("새로운 데이터 추가");
+
+            // 엔티티 저장
+            memoRepository.save(existingMemo);
+            memoRepository.save(newMemo);
+        }
+    }
 }

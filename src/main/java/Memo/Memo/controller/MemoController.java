@@ -77,13 +77,7 @@ public class MemoController {
 
     @PostMapping("/re")
     public String edit(@RequestParam("id") Long id, @RequestParam("data") String newData) {
-        Optional<Memo> memo = memoService.findMemo(id);
-
-        if (memo.isPresent()) {
-            Memo existingMemo = memo.get();
-            existingMemo.setData(newData);
-            memoService.addMemo(existingMemo);
-        }
+        memoService.reMemo(id, newData);
 
         return "redirect:/memos"; // 수정 후 목록 페이지로 리다이렉트
     }
