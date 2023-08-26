@@ -43,13 +43,8 @@ public class MemoService {
             // 기존 데이터를 수정
             existingMemo.setData(newData);
 
-            // 새로운 데이터를 추가한 엔티티 생성
-            Memo newMemo = new Memo();
-            newMemo.setData("새로운 데이터 추가");
-
             // 엔티티 저장
             memoRepository.save(existingMemo);
-            memoRepository.save(newMemo);
         }
     }
 }

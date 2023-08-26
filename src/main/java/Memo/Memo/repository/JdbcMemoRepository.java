@@ -159,7 +159,7 @@ public class JdbcMemoRepository implements MemoRepository{
     }
 
     @Override
-    public Memo redata(Memo memo) {
+    public Memo redata(Long num, String redata) {
         return null;
     }
 

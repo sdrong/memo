@@ -33,7 +33,7 @@ public class MemoryMemoRepository implements MemoRepository{
     }
 
     @Override
-    public Memo redata(Memo memo) {
+    public Memo redata(Long num, String rewrite) {
         return null;
     }
 

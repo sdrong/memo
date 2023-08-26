@@ -43,7 +43,12 @@ public class JpaMemoRepository implements MemoRepository{
     }
 
     @Override
-    public Memo redata(Memo memo) {
-        return null;
+    public Memo redata(Long num, String rewrite) {
+        Memo memo = em.find(Memo.class, num);
+        if (memo != null){
+            memo.setData(rewrite);
+            em.merge(memo);
+        }
+        return memo;
     }
 }

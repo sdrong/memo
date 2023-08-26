@@ -13,7 +13,6 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    /*
     //이건 jpa일때 사용
     private final DataSource dataSource;
     private final EntityManager em;
@@ -34,9 +33,9 @@ public class SpringConfig {
         //return new JdbcMemoRepository(dataSource);
         return new JpaMemoRepository(em);
     }
-    */
 
 
+    /*
     //spring data jpa일 때 사용
     private final MemoRepository memoRepository;
 
@@ -50,4 +49,5 @@ public class SpringConfig {
 
         return new MemoService(memoRepository);
     }
+    */
 }

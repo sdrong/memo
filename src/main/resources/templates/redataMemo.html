@@ -3,12 +3,13 @@
 <body>
 
 <div class="container">
-    <form action="/memos/new" method="post">
+    <form action="/re" method="post">
+        <input type="hidden" name="id" th:value="${memo.id}">
         <div class="form-group">
             <label for="data">데이터</label>
-            <input type="text" id="data" name="data" placeholder="내용을 입력하시오"th:value="${memo.data}">
+            <input type="text" id="data" name="data" th:value="${memo.data}">
         </div>
-        <button type="submit">등록</button>
+        <button type="submit">수정</button>
     </form>
 </div>
 <button onclick="goBack()">뒤로가기</button>
